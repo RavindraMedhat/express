@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>
+            project :-
+            <%= name %><br>
+                Devlopers :- <br>
+                <!-- <%= devlopers.data[0].name %>
+                    <%= devlopers.data[0].surname %><br>
+                        <%= devlopers.data[1].name %>
+                            <%= devlopers.data[1].surname %><br> -->
+
+                <% devlopers.data.forEach((dev)=>{ %>
+                    <%= dev.name %>
+                        <%= dev.surname %><br>
+                            <% }) %>
+                            <img src=""
+        </h1>
+    </div>
+</body>
+
+</html>
