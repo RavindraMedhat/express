@@ -2,22 +2,14 @@ const express = require('express')
 const app = express();
 
 app.set("view engine", "ejs")
-// app.set('views', __dirname + '/views');
+app.use(express.static("views"));
 
-// app.set("views","")
-
-const sistersData = [
-  { name: 'Rajvi', study: 'Computer Science', socialMedia: 'https://example.com/rajvi' },
-  { name: 'Sister2', study: 'Art History', socialMedia: 'https://example.com/sister2' },
-];
 
 app.get('/', (req, res) => {
-  const name = req.query.name || 'Guest';
-  const sister = sistersData.find((sister) => sister.name === name);
-  res.render('index', { name, sister });
+    res.render('info');
 });
 
-app.get("/", (req, res) => {
+app.get("/page1", (req, res) => {
     res.render("page1", {
         "name": "rvcl_api",
         "devlopers": {
