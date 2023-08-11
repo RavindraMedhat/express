@@ -23,14 +23,15 @@ const rajviProfileData = {
     emergencyContacts: [{
         name: "Ravindra medhat",
         phoneNumber: "+91 9624707485"
-    }]
+    }],
+    bloodgroup: "B+"
 
 
 };
 const vandanaProfileData = {
     // Provide the dynamic data for the profile here
     name: 'Vandana',
-    photo: 'Vandana.jpg',
+    photo: 'Sister.jpg',
     about: 'Hello! I\'m Vandana...',
     education: 'I graduated with a Bachelor\'s degree...',
     jobTitle: 'Marketing Manager',
@@ -46,13 +47,14 @@ const vandanaProfileData = {
     emergencyContacts: [
         {
             name: "Prashant chawada",
-            phoneNumber: "+91 9624707485"
+            phoneNumber: "+91 9925309547"
         },
         {
             name: "Ravindra medhat",
             phoneNumber: "+91 9624707485"
         }
-    ]
+    ],
+    bloodgroup: "B+"
 };
 
 app.get('/rajvi', (req, res) => {
