@@ -61,86 +61,46 @@
       text-align: center;
       padding: 1rem 0;
     }
+
+    #emergencyButton {
+      margin-right: 10px;
+    }
   </style>
   <title>Meet Vandana</title>
 </head>
-<!-- 
-<body>
-
-  <header>
-    <h1>Meet Vandana</h1>
-  </header>
-
-  <section id="about" class="section bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <img src="Rajvi.jpg" alt="Vandana's Photo" class="img-fluid rounded-circle about-photo">
-        </div>
-      </div>
-      <div class="row mt-4">
-        <div class="col-md-8 mx-auto">
-          <h2>About Vandana</h2>
-          <p>Hello! I'm Vandana. I love exploring new places and learning about different cultures. In my free time, I
-            enjoy painting and reading novels.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="education" class="section">
-    <div class="container">
-      <h2>Education</h2>
-      <p>I graduated with a Bachelor's degree in Psychology from XYZ University in 20XX. I also completed a Master's
-        degree in Business Administration from ABC University in 20XX.</p>
-    </div>
-  </section>
-
-  <section id="work" class="section bg-light">
-    <div class="container">
-      <h2>Work Experience</h2>
-      <h3>Marketing Manager - ABC Company</h3>
-      <p>I'm currently working as a Marketing Manager at ABC Company. My responsibilities include developing marketing
-        strategies, managing campaigns, and analyzing market trends.</p>
-    </div>
-  </section>
-
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact Me</h2>
-      <p>You can reach out to me via email at <a href="mailto:email@example.com">email@example.com</a>. Connect with me
-        on social media:</p>
-      <ul class="social-icons">
-        <li><a href="https://www.linkedin.com/[your-profile]" class="text-decoration-none"><i
-              class="fab fa-linkedin"></i></a></li>
-        <li><a href="https://www.instagram.com/[your-profile]" class="text-decoration-none"><i
-              class="fab fa-instagram"></i></a></li>
-        <li><a href="https://www.facebook.com/[your-profile]" class="text-decoration-none"><i
-              class="fab fa-facebook"></i></a></li>
-        <li><a href="tel:9624707485" class="text-decoration-none"><i class="fas fa-phone"></i></a></li>
-        
-        <li><a href="https://wa.me/9624707485" class="text-decoration-none"><i class="fab fa-whatsapp"></i></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2023 Vandana. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body> -->
-
 
 <body>
-
   <header>
-    <h1>Meet <%= profile.name %>
-    </h1>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <button id="emergencyButton" class="btn btn-danger">Emergency Contact</button>
+        </div>
+        <div id="emergencyDetails" style="display: none;">
+          <h2>Emergency Contact Details</h2>
+          <% profile.emergencyContacts.forEach((emergencyContact)=> { %>
+            <p>Name: <%= emergencyContact.name %>
+            </p>
+            <p>Phone Number:
+              <a href="tel:<%= emergencyContact.phoneNumber %>" class="text-decoration-none">
+                <i class="fas fa-phone"></i>
+                <%= emergencyContact.phoneNumber %>
+              </a>
+            </p>
+            <% } )%>
+        </div>
+
+
+
+      </div>
+    </div>
+    <div class="col-md-4 text-center">
+      <h1>Meet <%= profile.name %>
+      </h1>
+    </div>
+
+    </div>
+
   </header>
 
   <section id="about" class="section bg-light">
@@ -165,70 +125,87 @@
     </div>
   </section>
 
-  <section id="education" class="section">
-    <div class="container">
-      <% if (profile.education) { %>
+  <% if (profile.education) { %>
+    <section id="education" class="section">
+      <div class="container">
         <h2>Education</h2>
         <p>
           <%= profile.education %>
         </p>
-        <% } %>
-    </div>
-  </section>
+      </div>
+    </section>
+    <% } %>
 
-  <section id="work" class="section bg-light">
-    <div class="container">
       <% if (profile.jobTitle && profile.company && profile.workExperience) { %>
-        <h2>Work Experience</h2>
-        <h3>
-          <%= profile.jobTitle %> - <%= profile.company %>
-        </h3>
-        <p>
-          <%= profile.workExperience %>
-        </p>
+        <section id="work" class="section bg-light">
+          <div class="container">
+            <h2>Work Experience</h2>
+            <h3>
+              <%= profile.jobTitle %> - <%= profile.company %>
+            </h3>
+            <p>
+              <%= profile.workExperience %>
+            </p>
+          </div>
+        </section>
         <% } %>
-    </div>
-  </section>
 
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact Me</h2>
-      <p>You can reach out to me via email at <a href="mailto:<%= profile.email %>">
-          <%= profile.email %>
-        </a>. Connect with me
-        on social media:</p>
-      <ul class="social-icons">
-        <% if (profile.linkedin) { %>
-          <li><a href="<%= profile.linkedin %>" class="text-decoration-none"><i class="fab fa-linkedin"></i></a></li>
-          <% } %>
-            <% if (profile.instagram) { %>
-              <li><a href="<%= profile.instagram %>" class="text-decoration-none"><i class="fab fa-instagram"></i></a>
-              </li>
-              <% } %>
-                <% if (profile.facebook) { %>
-                  <li><a href="<%= profile.facebook %>" class="text-decoration-none"><i class="fab fa-facebook"></i></a>
+          <section id="contact" class="section">
+            <div class="container">
+              <h2>Contact Me</h2>
+              <p>You can reach out to me via email at <a href="mailto:<%= profile.email %>">
+                  <%= profile.email %>
+                </a>. Connect with me
+                on social media:</p>
+              <ul class="social-icons">
+                <% if (profile.linkedin) { %>
+                  <li><a href="<%= profile.linkedin %>" class="text-decoration-none"><i class="fab fa-linkedin"></i></a>
                   </li>
                   <% } %>
-                    <% if (profile.phoneNumber) { %>
-                      <li><a href="tel:<%= profile.phoneNumber %>" class="text-decoration-none"><i
-                            class="fas fa-phone"></i></a></li>
+                    <% if (profile.instagram) { %>
+                      <li><a href="<%= profile.instagram %>" class="text-decoration-none"><i
+                            class="fab fa-instagram"></i></a>
+                      </li>
                       <% } %>
-                        <% if (profile.whatsapp) { %>
-                          <li><a href="<%= profile.whatsapp %>" class="text-decoration-none"><i
-                                class="fab fa-whatsapp"></i></a></li>
+                        <% if (profile.facebook) { %>
+                          <li><a href="<%= profile.facebook %>" class="text-decoration-none"><i
+                                class="fab fa-facebook"></i></a>
+                          </li>
                           <% } %>
-      </ul>
-    </div>
-  </section>
+                            <% if (profile.phoneNumber) { %>
+                              <li><a href="tel:<%= profile.phoneNumber %>" class="text-decoration-none"><i
+                                    class="fas fa-phone"></i></a></li>
+                              <% } %>
+                                <% if (profile.whatsapp) { %>
+                                  <li><a href="<%= profile.whatsapp %>" class="text-decoration-none"><i
+                                        class="fab fa-whatsapp"></i></a></li>
+                                  <% } %>
+              </ul>
+            </div>
+          </section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; <%= profile.year %>
-          <%= profile.name %>. All rights reserved.</p>
-    </div>
-  </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+          <footer class="footer">
+            <div class="container">
+              <p>&copy; <%= profile.year %>
+                  <%= profile.name %>. All rights reserved.</p>
+            </div>
+          </footer>
+
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+          <script>
+            const emergencyButton = document.getElementById('emergencyButton');
+            const emergencyDetails = document.getElementById('emergencyDetails');
+
+            emergencyButton.addEventListener('click', () => {
+              if (emergencyDetails.style.display === 'none') {
+                emergencyDetails.style.display = 'block';
+              } else {
+                emergencyDetails.style.display = 'none';
+              }
+            });
+          </script>
 </body>
 
 </html>
