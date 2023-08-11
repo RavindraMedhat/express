@@ -31,7 +31,7 @@ const rajviProfileData = {
 const vandanaProfileData = {
     // Provide the dynamic data for the profile here
     name: 'Vandana',
-    photo: 'Sister.jpg',
+    photo: 'vandana.jpg',
     about: 'Hello! I\'m Vandana...',
     education: 'I graduated with a Bachelor\'s degree...',
     jobTitle: 'Marketing Manager',
