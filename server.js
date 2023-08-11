@@ -4,7 +4,7 @@ const app = express();
 app.set("view engine", "ejs")
 app.use(express.static("views"));
 
-const profileData = {
+const rajviProfileData = {
     // Provide the dynamic data for the profile here
     name: 'Rajvi',
     photo: 'Rajvi.jpg',
@@ -14,16 +14,35 @@ const profileData = {
     company: 'ABC Company',
     workExperience: 'I\'m currently working as a Marketing Manager...',
     email: 'email@example.com',
+    // linkedin: 'https://www.linkedin.com/in/ravindrasinh-medhat-06823b223',
+    instagram: 'https://www.instagram.com/vandanamedhat',
+    // facebook: 'https://www.facebook.com/[your-profile]',
+    phoneNumber: '9624707485',
+    whatsapp: 'https://wa.me/9624707485',
+    year: '2023'
+};
+const vandanaProfileData = {
+    // Provide the dynamic data for the profile here
+    name: 'Vandana',
+    photo: 'Vandana.jpg',
+    about: 'Hello! I\'m Vandana...',
+    education: 'I graduated with a Bachelor\'s degree...',
+    jobTitle: 'Marketing Manager',
+    company: 'ABC Company',
+    workExperience: 'I\'m currently working as a Marketing Manager...',
+    email: 'email@example.com',
     linkedin: 'https://www.linkedin.com/in/ravindrasinh-medhat-06823b223',
-    instagram: 'https://www.instagram.com/ravindrasinh_7485',
-    facebook: 'https://www.facebook.com/[your-profile]',
+    instagram: 'https://www.instagram.com/_rajvi_mangukia_',
+    // facebook: 'https://www.facebook.com/[your-profile]',
     phoneNumber: '9624707485',
     whatsapp: 'https://wa.me/9624707485',
     year: '2023'
 };
 
-app.get('/', (req, res) => {
-    res.render('info', { profile: profileData });
+app.get('/rajvi', (req, res) => {
+    res.render('info', { profile: rajviProfileData });
+}); app.get('/vandana', (req, res) => {
+    res.render('info', { profile: vandanaProfileData });
 });
 
 app.get("/page1", (req, res) => {

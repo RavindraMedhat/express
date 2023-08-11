@@ -153,11 +153,13 @@
       </div>
       <div class="row mt-4">
         <div class="col-md-8 mx-auto">
-          <h2>About <%= profile.name %>
-          </h2>
-          <p>
-            <%= profile.about %>
-          </p>
+          <% if (profile.about) { %>
+            <h2>About <%= profile.name %>
+            </h2>
+            <p>
+              <%= profile.about %>
+            </p>
+            <% } %>
         </div>
       </div>
     </div>
@@ -165,22 +167,26 @@
 
   <section id="education" class="section">
     <div class="container">
-      <h2>Education</h2>
-      <p>
-        <%= profile.education %>
-      </p>
+      <% if (profile.education) { %>
+        <h2>Education</h2>
+        <p>
+          <%= profile.education %>
+        </p>
+        <% } %>
     </div>
   </section>
 
   <section id="work" class="section bg-light">
     <div class="container">
-      <h2>Work Experience</h2>
-      <h3>
-        <%= profile.jobTitle %> - <%= profile.company %>
-      </h3>
-      <p>
-        <%= profile.workExperience %>
-      </p>
+      <% if (profile.jobTitle && profile.company && profile.workExperience) { %>
+        <h2>Work Experience</h2>
+        <h3>
+          <%= profile.jobTitle %> - <%= profile.company %>
+        </h3>
+        <p>
+          <%= profile.workExperience %>
+        </p>
+        <% } %>
     </div>
   </section>
 
@@ -192,11 +198,25 @@
         </a>. Connect with me
         on social media:</p>
       <ul class="social-icons">
-        <li><a href="<%= profile.linkedin %>" class="text-decoration-none"><i class="fab fa-linkedin"></i></a></li>
-        <li><a href="<%= profile.instagram %>" class="text-decoration-none"><i class="fab fa-instagram"></i></a></li>
-        <li><a href="<%= profile.facebook %>" class="text-decoration-none"><i class="fab fa-facebook"></i></a></li>
-        <li><a href="tel:<%= profile.phoneNumber %>" class="text-decoration-none"><i class="fas fa-phone"></i></a></li>
-        <li><a href="<%= profile.whatsapp %>" class="text-decoration-none"><i class="fab fa-whatsapp"></i></a></li>
+        <% if (profile.linkedin) { %>
+          <li><a href="<%= profile.linkedin %>" class="text-decoration-none"><i class="fab fa-linkedin"></i></a></li>
+          <% } %>
+            <% if (profile.instagram) { %>
+              <li><a href="<%= profile.instagram %>" class="text-decoration-none"><i class="fab fa-instagram"></i></a>
+              </li>
+              <% } %>
+                <% if (profile.facebook) { %>
+                  <li><a href="<%= profile.facebook %>" class="text-decoration-none"><i class="fab fa-facebook"></i></a>
+                  </li>
+                  <% } %>
+                    <% if (profile.phoneNumber) { %>
+                      <li><a href="tel:<%= profile.phoneNumber %>" class="text-decoration-none"><i
+                            class="fas fa-phone"></i></a></li>
+                      <% } %>
+                        <% if (profile.whatsapp) { %>
+                          <li><a href="<%= profile.whatsapp %>" class="text-decoration-none"><i
+                                class="fab fa-whatsapp"></i></a></li>
+                          <% } %>
       </ul>
     </div>
   </section>
